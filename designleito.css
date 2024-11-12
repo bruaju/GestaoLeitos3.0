@@ -1,3 +1,4 @@
+/* Reseta margens e paddings e define box-sizing */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
+/* Corpo da página com fundo escuro e centralização */
 body {
     background-color: #1c1c1c;  /* Cor de fundo escura */
     display: flex;
@@ -13,6 +15,7 @@ body {
     height: 100vh;
 }
 
+/* Container principal com fundo claro e bordas arredondadas */
 .container {
     background-color: #f2f2f2;  /* Cor de fundo clara para o container */
     width: 80%;
@@ -23,15 +26,18 @@ body {
     text-align: center;
 }
 
+/* Títulos com cor personalizada */
 h1, h2 {
     color: #8b0000;  /* Cor para os títulos */
     margin-bottom: 15px;
 }
 
+/* Estilo das ações dos botões */
 .actions {
     margin-top: 20px;
 }
 
+/* Estilo dos botões */
 button {
     margin: 10px 0;
     padding: 12px;
@@ -45,11 +51,13 @@ button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Botão de marcar sujo com cor diferente */
 #marcarSujo {
     background-color: #FF9800;
     color: #ffffff;
 }
 
+/* Botão de marcar ocupado com cor diferente */
 #marcarOcupado {
     background-color: #F44336;
     color: #ffffff;
@@ -61,11 +69,13 @@ button {
     color: #ffffff;
 }
 
+/* Efeito de hover nos botões */
 button:hover {
     background-color: #a30000;  /* Efeito de hover nos botões */
     transform: translateY(-2px);  /* Efeito de elevação no hover */
 }
 
+/* Botões desativados com opacidade reduzida */
 button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -93,4 +103,52 @@ button:disabled {
 
 #voltarLink:active {
     transform: translateY(1px);  /* Efeito de clique */
+}
+
+/* Media Queries para responsividade */
+
+/* Para telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    /* Ajusta a largura do container para 90% em telas menores */
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Ajusta o tamanho da fonte nos títulos */
+    h1, h2 {
+        font-size: 16px;
+    }
+
+    /* Ajusta o tamanho dos botões */
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Ajuste no link de voltar */
+    #voltarLink {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+/* Para telas com largura máxima de 480px */
+@media (max-width: 480px) {
+    /* Ajuste do título para telas muito pequenas */
+    h1, h2 {
+        font-size: 14px;
+    }
+
+    /* Ajusta os botões para que fiquem com o texto legível */
+    button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    /* Ajuste do link de voltar */
+    #voltarLink {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
 }
