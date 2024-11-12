@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1c1c1c;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    background-color: #dddddd;
+    border-radius: 15px;
+    padding: 30px;
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove o sublinhado dos links */
+a {
+    text-decoration: none;
+    color: inherit; /* Herda a cor do elemento pai, para não mudar a cor do link */
+}
+
+/* Remove a cor de seleção de links */
+a:focus, a:hover {
+    outline: none; /* Remove o contorno padrão do foco */
+    color: inherit; /* Garante que a cor do link não seja alterada ao ser clicado */
+}
+
+
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px; /* Ajuste o tamanho da logo para algo visível e proporcional */
+    height: auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Alinha o botão à esquerda e o título no centro */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.voltar-seta {
+    background-color: #8b0000;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s;
+}
+
+.voltar-seta i {
+    margin-right: 10px;
+}
+
+.voltar-seta:hover {
+    background-color: #d10007;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #8b0000;
+    font-size: 28px;
+    text-align: center;
+    flex-grow: 1; /* Faz o título ocupar o espaço disponível */
+    font-weight: bold;
+}
+
+.leitos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.leito-box {
+    background-color: #8b0000;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s;
+}
+
+.leito-box:hover {
+    background-color: #d10007;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Cores específicas para o status dos leitos */
+.leito-box.disponivel {
+    background-color: #4CAF50; /* Verde */
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+}
+
+.leito-box.pendente {
+    background-color: #FF9800; /* Laranja */
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.4);
+}
+
+.leito-box.ocupado {
+    background-color: #F44336; /* Vermelho */
+    box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+}
+
+/* Estilo para os selects */
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background-color: #f7f7f7;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    background-color: #e1f5e3;
+}
+
+/* Adicionando uma animação mais suave para o carregamento */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container {
+    animation: fadeIn 0.5s ease-in-out;
+}

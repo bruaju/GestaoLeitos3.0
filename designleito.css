@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1c1c1c;  /* Cor de fundo escura */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #f2f2f2;  /* Cor de fundo clara para o container */
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;  /* Bordas arredondadas */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);  /* Sombra para destacar o container */
+    text-align: center;
+}
+
+h1, h2 {
+    color: #8b0000;  /* Cor para os títulos */
+    margin-bottom: 15px;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+button {
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;  /* Bordas arredondadas nos botões */
+    background-color: #8b0000;  /* Cor de fundo do botão */
+    color: white;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#marcarSujo {
+    background-color: #FF9800;
+    color: #ffffff;
+}
+
+#marcarOcupado {
+    background-color: #F44336;
+    color: #ffffff;
+}
+
+/* Novo estilo para o botão 'Marcar como Disponível' */
+#marcarDisponivel {
+    background-color: #4CAF50;
+    color: #ffffff;
+}
+
+button:hover {
+    background-color: #a30000;  /* Efeito de hover nos botões */
+    transform: translateY(-2px);  /* Efeito de elevação no hover */
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Estilo do link transformado em caixa de botão */
+#voltarLink {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #8b0000;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#voltarLink:hover {
+    background-color: #a30000;
+    transform: translateY(-2px);  /* Efeito de elevação */
+}
+
+#voltarLink:active {
+    transform: translateY(1px);  /* Efeito de clique */
+}

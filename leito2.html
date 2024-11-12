@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leito 2 - Detalhes</title>
+    <link rel="stylesheet" href="designleito.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Detalhes do Leito 2</h1>
+
+        <div id="leitoDetails">
+            <h2>Leito 2</h2>
+            <p>Status: <span id="statusLeito">Disponível</span></p>
+            <p>Adicionado em: <span id="dataHora">10/11/2024, 20:17:32</span></p>
+        </div>
+
+        <div class="actions">
+            <button id="marcarSujo">Marcar como Pendente</button>
+            <button id="marcarOcupado">Marcar como Ocupado</button>
+            <button id="marcarDisponivel">Marcar como Disponível</button>
+        </div>
+
+        <a id="voltarLink" href="leitosdisponiveis.html">Voltar para Leitos Disponíveis</a>
+    </div>
+
+    <script>
+        // Função para atualizar o status do leito
+        function atualizarStatusLeito(novoStatus) {
+            document.getElementById("statusLeito").textContent = novoStatus;
+            document.getElementById("dataHora").textContent = new Date().toLocaleString();
+    
+            // Atualiza o status do leito no localStorage
+            let leitos = JSON.parse(localStorage.getItem("leitos")) || [];
+            const leitoIndex = leitos.findIndex(leito => leito.id === "Leito 2");
+            
+            if (leitoIndex !== -1) {
+                leitos[leitoIndex].status = novoStatus;
+                leitos[leitoIndex].dataHora = new Date().toLocaleString();
+            } else {
+                leitos.push({ id: "Leito 2", status: novoStatus, dataHora: new Date().toLocaleString() });
+            }
+            
+            localStorage.setItem("leitos", JSON.stringify(leitos));
+    
+            // Atualiza a cor do leito na tela de Leitos Disponíveis
+            atualizarCorLeito(novoStatus);
+        }
+    
+        // Função para atualizar a cor do leito na tela de Leitos Disponíveis
+        function atualizarCorLeito(status) {
+            const leitoBox = document.querySelector(`#leito-${status.toLowerCase()}`);
+            if (leitoBox) {
+                leitoBox.classList.remove('disponivel', 'pendente', 'ocupado');
+                leitoBox.classList.add(status.toLowerCase());
+            }
+        }
+    
+        // Função para obter o status do leito do localStorage
+        function obterStatusLeito() {
+            let leitos = JSON.parse(localStorage.getItem("leitos")) || [];
+            const leito = leitos.find(leito => leito.id === "Leito 2");
+            if (leito) {
+                return leito.status;
+            }
+            return "Disponível"; // Valor padrão
+        }
+    
+        // Função para alterar automaticamente o status para "Pendente" a cada 4 horas, se o leito estiver disponível
+        function alterarStatusAutomaticamente() {
+            let statusLeito = obterStatusLeito();
+            if (statusLeito === "Disponível") {
+                atualizarStatusLeito("Pendente");
+            }
+        }
+    
+        // Inicializa o status do leito
+        const statusLeito = obterStatusLeito();
+        document.getElementById("statusLeito").textContent = statusLeito;  // Atualiza o status na página
+    
+        // Funções para alterar o status ao clicar nos botões
+        document.getElementById("marcarSujo").addEventListener("click", function() {
+            atualizarStatusLeito("Pendente");
+        });
+    
+        document.getElementById("marcarOcupado").addEventListener("click", function() {
+            atualizarStatusLeito("Ocupado");
+        });
+    
+        document.getElementById("marcarDisponivel").addEventListener("click", function() {
+            atualizarStatusLeito("Disponível");
+        });
+    
+        // Configura o intervalo para verificar o status do leito a cada 4 horas (4h = 4 * 60 * 60 * 1000ms = 14400000ms)
+        setInterval(alterarStatusAutomaticamente, 14400000); // 4 horas
+    
+    </script>
+    
+</body>
+</html>

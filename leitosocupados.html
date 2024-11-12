@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitos Ocupados</title>
+    <link rel="stylesheet" href="disponibilidade.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <a href="gestao.html" class="voltar-seta"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <h1>Leitos Ocupados</h1>
+        </div>
+        <div class="leitos-grid" id="leitosOcupadosContainer"></div>
+    </div>
+
+    <script>
+        // Função para mover o leito de "Ocupado" para "Pendente"
+        function moverParaPendente(leitoId) {
+            let leitos = JSON.parse(localStorage.getItem("leitos")) || [];
+            
+            const leitoIndex = leitos.findIndex(leito => leito.id === leitoId);
+            if (leitoIndex !== -1) {
+                // Atualiza o status do leito
+                leitos[leitoIndex].status = "Pendente";
+                // Atualiza a data/hora
+                leitos[leitoIndex].dataHora = new Date().toLocaleString();
+            }
+
+            // Salva novamente a lista de leitos no localStorage
+            localStorage.setItem("leitos", JSON.stringify(leitos));
+
+            // Atualiza a página
+            carregarLeitos();
+        }
+
+        // Função para carregar e exibir os leitos ocupados
+        function carregarLeitos() {
+            let leitos = JSON.parse(localStorage.getItem("leitos")) || [];
+            const ocupadosContainer = document.getElementById("leitosOcupadosContainer");
+            ocupadosContainer.innerHTML = ""; // Limpa o conteúdo antes de carregar novamente
+
+            leitos.forEach(leito => {
+                if (leito.status === "Ocupado") {
+                    const leitoDiv = document.createElement("div");
+                    leitoDiv.className = "leito-box ocupado"; // Classe para leitos ocupados
+                    leitoDiv.innerHTML = `
+                        <h3> ${leito.id}</h3> <!-- Remover o # -->
+                        <p>Status: <strong>${leito.status}</strong></p> 
+                        <p>Adicionado em: <strong>${leito.dataHora}</strong></p>
+                    
+                    `;
+                    ocupadosContainer.appendChild(leitoDiv);
+                }
+            });
+        }
+
+        // Carrega os leitos ocupados ao abrir a página
+        window.onload = carregarLeitos;
+    </script>
+
+</body>
+</html>
