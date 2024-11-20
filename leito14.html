@@ -32,13 +32,13 @@
             document.getElementById("dataHora").textContent = new Date().toLocaleString();
 
             let leitos = JSON.parse(localStorage.getItem("leitos")) || [];
-            const leitoIndex = leitos.findIndex(leito => leito.id === "Leito 15");
+            const leitoIndex = leitos.findIndex(leito => leito.id === "Leito 14");
 
             if (leitoIndex !== -1) {
                 leitos[leitoIndex].status = novoStatus;
                 leitos[leitoIndex].dataHora = new Date().toLocaleString();
             } else {
-                leitos.push({ id: "Leito 15", status: novoStatus, dataHora: new Date().toLocaleString() });
+                leitos.push({ id: "Leito 14", status: novoStatus, dataHora: new Date().toLocaleString() });
             }
 
             localStorage.setItem("leitos", JSON.stringify(leitos));
